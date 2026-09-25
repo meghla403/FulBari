@@ -1,0 +1,5 @@
+node_modules
+dist
+qa-shots
+# byte-identical duplicates of assets/source photos, kept out of the repo (still on disk)
+assets/dropped-copies/

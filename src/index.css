@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Open Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Rajdhani", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Palette sampled from the reference design */
+  --color-lime: #80b500;
+  --color-lime-dark: #6a9700;
+  --color-ink: #071c1f;
+  --color-cream: #f7f5eb;
+  --color-blush: #efe4e0;
+  --color-tile: #f8f8f8;
+  --color-star: #ffb800;
+  --color-line: #e3e8e8;
+}
+
+/* Hover-only affordances are gated on this so touch devices never depend on hover. */
+@custom-variant hoverable (@media (hover: hover) and (pointer: fine));
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-white font-sans text-base text-ink antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-lime;
+  }
+}
+
+@keyframes slide-fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
